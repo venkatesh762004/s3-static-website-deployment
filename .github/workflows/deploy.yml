@@ -32,18 +32,9 @@ jobs:
       - name: Verify AWS Identity
         run: aws sts get-caller-identity
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
-        run: terraform init
-
-      - name: Terraform Validate
-        run: terraform validate
-
-      - name: Terraform Plan
-        run: terraform plan
-
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve
+      - name: Deploy Website to S3
+        run: |
+          aws s3 sync . s3://${{ secrets.S3_BUCKET }} \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*"
