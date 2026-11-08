@@ -84,16 +84,6 @@ s3-static-website-deployment/
 | CDN | Amazon CloudFront |
 | Origin Security | Origin Access Control (OAC) |
 
-## Deployment Command
-
-```bash
-aws s3 sync . s3://venkatesh-portfolio-website-2026 \
-  --delete \
-  --exclude ".git/*" \
-  --exclude ".github/*" \
-  --exclude ".gitignore"
-```
-
 ## Key Learning Outcomes
 
 - Practiced AWS S3 bucket configuration.
